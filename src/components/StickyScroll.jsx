@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 export const StickyScroll = ({
     content = [],
@@ -73,24 +73,22 @@ export const StickyScroll = ({
 
             {/* Sticky Image Section */}
             <div className="sticky top-60 h-[70vh] flex items-center justify-center overflow-hidden z-20">
-                <AnimatePresence mode="wait">
-                    <motion.div
-                        key={activeIndex}
-                        initial={{ opacity: 0, scale: 0.97, y: 20 }}
-                        animate={{ opacity: 1, scale: 1, y: 0 }}
-                        exit={{ opacity: 0, scale: 0.97, y: -20 }}
-                        transition={{
-                            type: "spring",
-                            stiffness: 70,
-                            damping: 20,
-                            mass: 0.8,
-                            opacity: { duration: 0.8, ease: "easeInOut" },
-                        }}
-                        className={`absolute w-full h-full ${imageClass}`}
-                    >
-                        {content[activeIndex].content}
-                    </motion.div>
-                </AnimatePresence>
+                <motion.div
+                    key={activeIndex}
+                    initial={{ opacity: 0, scale: 0.97, y: 20 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.97, y: -20 }}
+                    transition={{
+                        type: "spring",
+                        stiffness: 70,
+                        damping: 20,
+                        mass: 0.8,
+                        opacity: { duration: 0.8, ease: "easeInOut" },
+                    }}
+                    className={`w-full h-full ${imageClass}`}
+                >
+                    {content[activeIndex].content}
+                </motion.div>
             </div>
 
         </motion.div>
