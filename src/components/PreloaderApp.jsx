@@ -12,9 +12,12 @@ const PreloaderApp = ({ children }) => {
     "/ser21.jpg","/ser22.jpg","/ser23.jpg","/ser24.jpg",
     "/ser31.jpg","/ser32.jpg","/ser33.jpg","/ser34.jpg",
     "/ser41.jpg","/ser42.jpg","/ser43.jpg","/ser44.jpg",
-    "/bg-home.png","/bg-all.png","/founder.jpg","/co-founder.jpg",
+    "/founder.jpg","/co-founder.jpg",
     "/video1.mp4","/video2.mp4","/video3.mp4"
   ];
+
+  // Hero backgrounds to preload explicitly
+  const heroBgAssets = ["/bg-home.png", "/bg-all.png"];
 
   useEffect(() => {
     // Only show preloader on first visit
@@ -24,7 +27,7 @@ const PreloaderApp = ({ children }) => {
     }
 
     let loaded = 0;
-    const total = assets.length;
+    const total = assets.length + heroBgAssets.length;
 
     const incrementProgress = () => {
       loaded += 1;
@@ -37,7 +40,7 @@ const PreloaderApp = ({ children }) => {
       }
     };
 
-    // Preload images
+    // Preload normal assets
     assets.forEach((asset) => {
       if (asset.endsWith(".mp4")) {
         const video = document.createElement("video");
@@ -50,6 +53,14 @@ const PreloaderApp = ({ children }) => {
         img.onload = incrementProgress;
         img.onerror = incrementProgress;
       }
+    });
+
+    // Preload hero background images explicitly
+    heroBgAssets.forEach((bg) => {
+      const img = new Image();
+      img.src = bg;
+      img.onload = incrementProgress;
+      img.onerror = incrementProgress;
     });
   }, []);
 

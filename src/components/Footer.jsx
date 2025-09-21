@@ -21,21 +21,21 @@ const Footer = () => {
         <img
           src={footerLogo}
           alt="Miraki Decor Logo"
-          className="w-32 md:w-120 object-contain mb-4"
+          className="w-70 md:w-120 object-contain mb-4"
         />
 
         {/* Optional text */}
         <p className="text-sm text-white">
-  ©2025 All rights reserved. Miraki Decor | Designed by{" "}
-  <a
-    href="https://workstate.in"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="text-[#ffcc66] hover:underline"
-  >
-    Workstate.in
-  </a>
-</p>
+          ©2025 All rights reserved. Miraki Decor | Designed by{" "}
+          <a
+            href="https://workstate.in"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[#ffcc66] hover:underline"
+          >
+            Workstate.in
+          </a>
+        </p>
 
         {/* Social Links */}
         <div className="flex justify-center gap-6 mt-4">
