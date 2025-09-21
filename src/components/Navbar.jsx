@@ -41,9 +41,11 @@ const Navbar = () => {
                   )}
                   <Link
                     to={link.href}
-                    className={`relative z-10 px-4 py-1 rounded-lg transition-colors ${
-                      isActive ? "text-black font-semibold" : "text-white"
-                    } hover:text-black hover:font-bold`}
+                    className={`relative z-10 px-4 py-1 rounded-lg transition-all
+    ${isActive
+                        ? "text-black font-semibold" // text inside active white box
+                        : "text-white hover:text-[#ffcc66] hover:font-bold" // hover color different from white
+                      }`}
                   >
                     {link.name}
                   </Link>
@@ -72,11 +74,10 @@ const Navbar = () => {
                   <li key={link.name}>
                     <Link
                       to={link.href}
-                      className={`transition-all px-3 py-1 rounded-lg ${
-                        isActive
+                      className={`transition-all px-3 py-1 rounded-lg ${isActive
                           ? "bg-white text-black font-semibold"
                           : "text-white hover:bg-white hover:text-black"
-                      }`}
+                        }`}
                       onClick={() => setOpen(false)}
                     >
                       {link.name}

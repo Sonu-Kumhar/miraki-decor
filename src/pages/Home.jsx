@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { FiMic, FiMicOff } from "react-icons/fi"; // Mic icons
+import { FiMic, FiMicOff, FiVolume2, FiVolumeX } from "react-icons/fi"; // Mic icons
 import heroBg from "../assets/bg-home.png";
 
 const Home = () => {
@@ -118,9 +118,8 @@ const Home = () => {
             >
               {/* Video */}
               <div
-                className={`relative overflow-hidden rounded-xl shadow-lg ${
-                  i % 2 === 1 ? "md:order-2" : ""
-                }`}
+                className={`relative overflow-hidden rounded-xl shadow-lg ${i % 2 === 1 ? "md:order-2" : ""
+                  }`}
               >
                 <video
                   src={item.src}
@@ -136,7 +135,7 @@ const Home = () => {
                   className="absolute top-4 right-4 p-2 bg-black/50 rounded-full cursor-pointer text-white text-2xl hover:bg-black/70 transition-colors"
                   onClick={() => toggleSound(i)}
                 >
-                  {soundEnabled[i] ? <FiMic /> : <FiMicOff />}
+                  {soundEnabled[i] ? <FiVolume2 /> : <FiVolumeX />}
                 </div>
               </div>
 

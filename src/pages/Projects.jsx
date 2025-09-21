@@ -36,9 +36,9 @@ const ProjectSection = ({ title, mainImg, desc, gallery }) => (
     <img
       src={mainImg}
       alt={title}
-      className="w-full h-[400px] object-cover shadow-lg mb-6"
+      className="w-full h-[400px] rounded-3xl object-cover shadow-lg mb-6"
     />
-    <p className="text-lg text-gray-950 text-center mb-8">{desc}</p>
+    <p className="text-xl text-white text-center mb-8">{desc}</p>
 
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
   {gallery.map((img, idx) => (
@@ -46,7 +46,7 @@ const ProjectSection = ({ title, mainImg, desc, gallery }) => (
       key={idx}
       src={img}
       alt={`${title} ${idx + 1}`}
-      className="w-full h-96 object-cover shadow-md hover:scale-105 transition-transform duration-300"
+      className="w-full h-96 object-cover border-2 border-white p-1.5 rounded-3xl shadow-md hover:scale-105 transition-transform duration-300"
     />
   ))}
 </div>

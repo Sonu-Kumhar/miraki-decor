@@ -46,7 +46,7 @@ const Services = () => {
       <h1 className="text-5xl font-bold text-center mb-6 text-[#b47834]">
         What We Offer
       </h1>
-      <p className="text-xl text-center text-gray-950 mb-16">
+      <p className="text-xl text-center text-white mb-16">
         Interior design services tailored to how you live, work, and experience
         space.
       </p>
@@ -77,7 +77,7 @@ const Services = () => {
               <h2 className="text-3xl md:text-4xl text-[#c17c2d] font-semibold mb-4">
                 {service.title}
               </h2>
-              <p className="text-gray-950 mb-6 text-lg md:text-2xl leading-relaxed">
+              <p className="text-white mb-6 text-lg md:text-2xl leading-relaxed">
                 {service.desc}
               </p>
 
@@ -106,7 +106,7 @@ const Services = () => {
       </div>
 
       {/* SEO Footer */}
-      <div className="mt-20 text-center text-sm text-gray-500">
+      <div className="mt-20 text-center text-sm text-white">
         best interior design company virar | Mumbai | Miraki Decor
       </div>
     </div>
