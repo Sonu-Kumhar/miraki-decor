@@ -4,7 +4,7 @@ import coFounderImg from "/co-founder.jpg";
 
 const About = () => {
   return (
-    <div className="bg-white text-black mt-">
+    <div className="bg-[#faf3dd] text-black mt-">
       {/* Hero Section */}
       <section className="bg-[#f5f1e6] py-40 px-6  text-center">
         <h1 className="text-4xl md:text-5xl font-bold text-[#b68a59]">

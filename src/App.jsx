@@ -6,9 +6,10 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Services from "./pages/Services";
 import Projects from "./pages/Projects";
+import Contact from "./pages/Contact";
 
 const Blogs = () => <div className="pt-20 text-center">Blogs Page</div>;
-const Contact = () => <div className="pt-20 text-center">Contact Page</div>;
+// const Contact = () => <div className="pt-20 text-center">Contact Page</div>;
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/services" element={<Services />} />
         <Route path="/projects" element={<Projects />} /> {/* default */}
+        <Route path="/contact" element={<Contact />} /> {/* default */}
         <Route path="/projects/:category" element={<Projects />} /> {/* dynamic */}
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/contact" element={<Contact />} />

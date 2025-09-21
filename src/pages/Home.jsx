@@ -78,7 +78,7 @@ const Home = () => {
       </section>
 
       {/* Intro Section */}
-      <section className="bg-[#e6d9c6] text-black px-6 py-16">
+      <section className="bg-[#faf3dd] text-black px-6 py-16">
         <motion.div
           className="max-w-4xl mx-auto text-center"
           initial={{ opacity: 0, y: 50 }}
@@ -100,7 +100,7 @@ const Home = () => {
       </section>
 
       {/* Services Section */}
-      <section className="bg-white text-black px-6 pb-16">
+      {/* <section className="bg-white text-black px-6 pb-16">
         <motion.div
           className="max-w-7xl mx-auto text-center"
           initial={{ opacity: 0, y: 50 }}
@@ -123,10 +123,10 @@ const Home = () => {
             View All Services
           </Link>
         </motion.div>
-      </section>
+      </section> */}
 
       {/* Video Section */}
-      <section className="bg-white text-black px-6 pb-20">
+      <section className="bg-[#faf3dd] text-black px-6 pb-20 pt-10">
         <div className="max-w-7xl mx-auto space-y-20">
           <h2 className="text-3xl font-bold text-center mb-10">
             Explore Our Latest Residential & Commercial Projects

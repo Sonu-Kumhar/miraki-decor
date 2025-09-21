@@ -26,13 +26,7 @@ const projectData = {
     mainImg: "/ser4.jpg",
     desc: "Stylish, functional, and space-saving modular kitchens tailored to your taste and lifestyle.",
     gallery: ["/ser41.jpg", "/ser42.jpg", "/ser43.jpg", "/ser44.jpg"],
-  },
-  consultancy: {
-    title: "Design & Consultancy",
-    mainImg: "/ser5.jpg",
-    desc: "End-to-end consultancy services for spaces that blend aesthetics and practicality with timeless design.",
-    gallery: ["/ser51.jpg", "/ser52.jpg", "/ser53.jpg", "/ser54.jpg"],
-  },
+  }
 };
 
 // 🔹 Component to render each project block
