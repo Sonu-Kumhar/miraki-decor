@@ -71,7 +71,7 @@ const Home = () => {
           </p>
           <Link
             to="/contact"
-            className="mt-6 inline-block px-6 py-3 bg-[#b68a59] text-black font-semibold rounded-lg hover:bg-white hover:text-black transition-colors shadow-lg"
+            className="mt-6 inline-block px-6 py-3 bg-white text-black font-semibold rounded-lg hover:font-bold hover:text-black transition-colors shadow-lg"
           >
             Let’s Connect
           </Link>
@@ -87,7 +87,7 @@ const Home = () => {
           transition={{ duration: 1, ease: "easeOut" }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-white">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#ffcc66]">
             Welcome to MIRAKI DECOR
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-white">
@@ -103,7 +103,7 @@ const Home = () => {
       {/* Video Section */}
       <section className="bg-[#] text-white px-6 pb-20 pt-10">
         <div className="max-w-7xl mx-auto space-y-20">
-          <h2 className="text-3xl font-bold text-center text-[#b68a59] mb-10">
+          <h2 className="text-3xl font-bold text-center text-[#ffcc66] mb-10">
             Explore Our Latest Residential & Commercial Projects
           </h2>
 
@@ -118,8 +118,10 @@ const Home = () => {
             >
               {/* Video */}
               <div
-                className={`relative overflow-hidden rounded-xl shadow-lg ${i % 2 === 1 ? "md:order-2" : ""
-                  }`}
+                className={`relative overflow-hidden rounded-xl transition-shadow duration-500 ${i % 2 === 1 ? "md:order-2" : ""}`}
+                style={{
+                  boxShadow: "15px 15px 30px rgba(0,0,0,0.5), 0 0 20px rgba(0,0,0,0.2)",
+                }}
               >
                 <video
                   src={item.src}
@@ -127,7 +129,7 @@ const Home = () => {
                   loop
                   autoPlay
                   playsInline
-                  className="w-full h-[70vh] object-cover rounded-xl transition-all duration-500"
+                  className="w-full h-[70vh] object-cover rounded-xl transition-transform duration-500"
                   ref={(el) => (videoRefs.current[i] = el)}
                 />
                 {/* Mic Icon */}
@@ -139,6 +141,7 @@ const Home = () => {
                 </div>
               </div>
 
+
               {/* Text */}
               <motion.div
                 className={`text-center md:text-left`}
@@ -147,7 +150,7 @@ const Home = () => {
                 transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
                 viewport={{ once: true }}
               >
-                <h3 className="text-3xl font-bold text-[#b68a59]">{item.title}</h3>
+                <h3 className="text-3xl font-bold text-[#ffcc66]">{item.title}</h3>
                 <p className="mt-4 text-xl leading-relaxed">{item.desc}</p>
               </motion.div>
             </motion.div>
