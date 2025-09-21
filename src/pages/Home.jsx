@@ -78,7 +78,7 @@ const Home = () => {
       </section>
 
       {/* Intro Section */}
-      <section className="bg-white text-black px-6 py-16">
+      <section className="bg-[#e6d9c6] text-black px-6 py-16">
         <motion.div
           className="max-w-4xl mx-auto text-center"
           initial={{ opacity: 0, y: 50 }}
@@ -87,7 +87,7 @@ const Home = () => {
           viewport={{ once: true }}
         >
           <h2 className="text-3xl md:text-4xl font-bold text-[#b68a59]">
-            Welcome to Miraki Decor
+            Welcome to MIRAKI DECOR
           </h2>
           <p className="mt-6 text-lg leading-relaxed">
             We are one of the leading Interior Designers in Virar dedicated to
