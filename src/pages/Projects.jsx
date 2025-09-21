@@ -32,13 +32,13 @@ const projectData = {
 // 🔹 Component to render each project block
 const ProjectSection = ({ title, mainImg, desc, gallery }) => (
   <div className="mb-16">
-    <h2 className="text-3xl font-semibold mb-6 text-center">{title}</h2>
+    <h2 className="text-3xl text-[#b68a59] font-semibold mb-6 text-center">{title}</h2>
     <img
       src={mainImg}
       alt={title}
       className="w-full h-[400px] object-cover shadow-lg mb-6"
     />
-    <p className="text-lg text-gray-700 text-center mb-8">{desc}</p>
+    <p className="text-lg text-gray-950 text-center mb-8">{desc}</p>
 
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
   {gallery.map((img, idx) => (
@@ -107,8 +107,8 @@ const Projects = () => {
 
   // 🔹 If no category → show all projects
   return (
-    <div className="max-w-6xl mx-auto px-6 py-36">
-      <h1 className="text-4xl font-bold text-center mb-8">All Projects</h1>
+    <div className="max-w-6xl mx-auto px-6 pt-36">
+      <h1 className="text-4xl font-bold text-center mb-8 text-[#bb690b] ">All Projects</h1>
       {Object.values(projectData).map((project, idx) => (
         <ProjectSection key={idx} {...project} />
       ))}
