@@ -42,20 +42,20 @@ const ProjectSection = ({ title, mainImg, desc, gallery }) => (
     <img
       src={mainImg}
       alt={title}
-      className="w-full h-[400px] object-cover rounded-2xl shadow-lg mb-6"
+      className="w-full h-[400px] object-cover shadow-lg mb-6"
     />
     <p className="text-lg text-gray-700 text-center mb-8">{desc}</p>
 
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-      {gallery.map((img, idx) => (
-        <img
-          key={idx}
-          src={img}
-          alt={`${title} ${idx + 1}`}
-          className="rounded-xl shadow-md hover:scale-105 transition-transform duration-300"
-        />
-      ))}
-    </div>
+  {gallery.map((img, idx) => (
+    <img
+      key={idx}
+      src={img}
+      alt={`${title} ${idx + 1}`}
+      className="w-full h-96 object-cover shadow-md hover:scale-105 transition-transform duration-300"
+    />
+  ))}
+</div>
   </div>
 );
 
@@ -91,9 +91,9 @@ const Projects = () => {
       );
     }
     return (
-      <div className="max-w-6xl mx-auto px-6 py-16">
+      <div className="max-w-6xl mx-auto px-6 py-36">
         {/* Category Title */}
-        <h1 className="text-4xl font-bold text-center mb-12">{project.title}</h1>
+        {/* <h1 className="text-4xl font-bold text-center mb-12">{project.title}</h1> */}
 
         {/* Single Project */}
         <ProjectSection {...project} />
@@ -113,8 +113,8 @@ const Projects = () => {
 
   // 🔹 If no category → show all projects
   return (
-    <div className="max-w-6xl mx-auto px-6 py-16">
-      <h1 className="text-4xl font-bold text-center mb-12">All Projects</h1>
+    <div className="max-w-6xl mx-auto px-6 py-36">
+      <h1 className="text-4xl font-bold text-center mb-8">All Projects</h1>
       {Object.values(projectData).map((project, idx) => (
         <ProjectSection key={idx} {...project} />
       ))}
