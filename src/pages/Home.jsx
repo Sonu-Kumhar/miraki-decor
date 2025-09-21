@@ -44,7 +44,7 @@ const Home = () => {
   };
 
   return (
-    <div className="bg-black text-white">
+    <div className=" text-white">
       {/* Hero Section */}
       <section
         className="relative min-h-screen w-full flex items-center justify-center text-center overflow-hidden"
@@ -79,7 +79,7 @@ const Home = () => {
       </section>
 
       {/* Intro Section */}
-      <section className="bg-[#faf3dd] text-black px-6 py-16">
+      <section className=" text-black px-6 py-16">
         <motion.div
           className="max-w-4xl mx-auto text-center"
           initial={{ opacity: 0, y: 50 }}
@@ -87,10 +87,10 @@ const Home = () => {
           transition={{ duration: 1, ease: "easeOut" }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-[#b68a59]">
+          <h2 className="text-3xl md:text-4xl font-bold text-white">
             Welcome to MIRAKI DECOR
           </h2>
-          <p className="mt-6 text-lg leading-relaxed">
+          <p className="mt-6 text-lg leading-relaxed text-white">
             We are one of the leading Interior Designers in Virar dedicated to
             crafting beautiful, functional, and personalized spaces. Whether
             you’re looking to renovate your home or design a new corporate
@@ -101,7 +101,7 @@ const Home = () => {
       </section>
 
       {/* Video Section */}
-      <section className="bg-[#faf1dd] text-black px-6 pb-20 pt-10">
+      <section className="bg-[#] text-white px-6 pb-20 pt-10">
         <div className="max-w-7xl mx-auto space-y-20">
           <h2 className="text-3xl font-bold text-center text-[#b68a59] mb-10">
             Explore Our Latest Residential & Commercial Projects

@@ -43,7 +43,7 @@ const Navbar = () => {
                     to={link.href}
                     className={`relative z-10 px-4 py-1 rounded-lg transition-colors ${
                       isActive ? "text-black font-semibold" : "text-white"
-                    } hover:text-black`}
+                    } hover:text-black hover:font-bold`}
                   >
                     {link.name}
                   </Link>

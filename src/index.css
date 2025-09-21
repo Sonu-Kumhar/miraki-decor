@@ -1,8 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap');
 @import "tailwindcss";
 
-
 body {
-  font-family: 'Cinzel', serif;
-  background: #faf3dd;
+    font-family: 'Cinzel', serif;
+    /* Smooth animated gradient background */
+    background: linear-gradient(
+        180deg,
+        #2C1B0F 0%,
+        #5A2E17 35%,
+        #A35B2A 70%,
+        #E3B77A 100%
+    );
+    background-size: 300% 300%;
+    animation: gradientMove 12s ease infinite;
+    min-height: 100vh;
+    margin: 0;
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
