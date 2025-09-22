@@ -92,12 +92,11 @@ const Services = () => {
         {services.map((service, index) => (
           <motion.div
             key={index}
-            className={`flex flex-col md:flex-row items-center gap-16 md:gap-24 ${
-              index % 2 !== 0 ? "md:flex-row-reverse" : ""
-            }`}
-            initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
+            className={`flex flex-col md:flex-row items-center gap-16 md:gap-24 ${index % 2 !== 0 ? "md:flex-row-reverse" : ""
+              }`}
+            initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }} // smaller offset
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: index * 0.2 }}
+            transition={{ duration: 0.5, ease: "easeOut" }} // faster
             viewport={{ once: true, amount: 0.3 }}
           >
             {/* Image */}
@@ -105,7 +104,7 @@ const Services = () => {
               className="md:w-1/2 w-full relative overflow-hidden rounded-lg shadow-2xl"
               initial={{ scale: 0.95 }}
               whileInView={{ scale: 1 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
+              transition={{ duration: 0.5, ease: "easeOut" }} // faster
               viewport={{ once: true, amount: 0.3 }}
               style={{
                 boxShadow: "15px 15px 30px rgba(0,0,0,0.5), 0 0 20px rgba(0,0,0,0.2)",
@@ -121,9 +120,9 @@ const Services = () => {
             {/* Text */}
             <motion.div
               className="md:w-1/2 w-full"
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+              transition={{ duration: 0.5, ease: "easeOut" }} // faster
               viewport={{ once: true, amount: 0.3 }}
             >
               <h2 className="text-3xl md:text-4xl text-[#ffcc66] font-semibold mb-4">
@@ -151,6 +150,7 @@ const Services = () => {
             </motion.div>
           </motion.div>
         ))}
+
 
         {/* SEO Footer */}
         <div className="mt-20 text-center text-sm text-white">

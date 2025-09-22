@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { FiMic, FiMicOff, FiVolume2, FiVolumeX } from "react-icons/fi"; // Mic icons
 import heroBg from "../assets/bg-home.png";
 
+
 const Home = () => {
   const [offset, setOffset] = useState({ x: 0, y: 0 });
   const [soundEnabled, setSoundEnabled] = useState({}); // track which video has sound enabled

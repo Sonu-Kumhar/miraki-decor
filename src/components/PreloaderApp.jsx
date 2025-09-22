@@ -1,11 +1,12 @@
+// PreloaderApp.jsx
 import React, { useEffect, useState } from "react";
 import logo from "../assets/logo.png";
+import { imageCache } from "./preloaderCache";
 
 const PreloaderApp = ({ children }) => {
   const [progress, setProgress] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
 
-  // List all images/videos to preload
   const assets = [
     "/ser1.jpg","/ser2.jpg","/ser3.jpg","/ser4.jpg",
     "/ser11.jpg","/ser12.jpg","/ser13.jpg","/ser14.jpg",
@@ -16,11 +17,9 @@ const PreloaderApp = ({ children }) => {
     "/video1.mp4","/video2.mp4","/video3.mp4"
   ];
 
-  // Hero backgrounds to preload explicitly
   const heroBgAssets = ["/bg-home.png", "/bg-all.png"];
 
   useEffect(() => {
-    // Only show preloader on first visit
     if (sessionStorage.getItem("preloaderShown")) {
       setIsLoading(false);
       return;
@@ -36,32 +35,35 @@ const PreloaderApp = ({ children }) => {
         setTimeout(() => {
           setIsLoading(false);
           sessionStorage.setItem("preloaderShown", "true");
-        }, 500); // small delay for smooth fade
+        }, 500);
       }
     };
 
-    // Preload normal assets
-    assets.forEach((asset) => {
-      if (asset.endsWith(".mp4")) {
-        const video = document.createElement("video");
-        video.src = asset;
-        video.onloadeddata = incrementProgress;
-        video.onerror = incrementProgress;
-      } else {
+    const preloadImage = (src) => {
+      if (!imageCache[src]) {
         const img = new Image();
-        img.src = asset;
-        img.onload = incrementProgress;
+        img.src = src;
+        img.onload = () => {
+          imageCache[src] = img;
+          incrementProgress();
+        };
         img.onerror = incrementProgress;
+      } else {
+        incrementProgress(); // already cached
       }
-    });
+    };
 
-    // Preload hero background images explicitly
-    heroBgAssets.forEach((bg) => {
-      const img = new Image();
-      img.src = bg;
-      img.onload = incrementProgress;
-      img.onerror = incrementProgress;
+    const preloadVideo = (src) => {
+      const video = document.createElement("video");
+      video.src = src;
+      video.onloadeddata = incrementProgress;
+      video.onerror = incrementProgress;
+    };
+
+    assets.forEach((asset) => {
+      asset.endsWith(".mp4") ? preloadVideo(asset) : preloadImage(asset);
     });
+    heroBgAssets.forEach(preloadImage);
   }, []);
 
   if (!isLoading) return <>{children}</>;
