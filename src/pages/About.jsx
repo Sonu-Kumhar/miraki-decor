@@ -76,7 +76,7 @@ const About = () => {
 
         {/* Founders Section */}
         <motion.section
-          className="py-20"
+          className="py-20 "
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 1 }}
@@ -86,11 +86,11 @@ const About = () => {
             Meet Our Founder & Lead Designer
           </h2>
 
-          <div className="mt-12 flex flex-col md:flex-row justify-center items-start gap-12">
+          <div className="mt-12 flex flex-col md:flex-row justify-center items-start gap-12 ">
             {founders.map((founder, index) => (
               <div
                 key={index}
-                className="flex flex-col items-center max-w-sm text-center p-6 rounded-xl shadow-lg"
+                className="flex flex-col items-center max-w-sm text-center p-6 rounded-xl shadow-lg bg-black/40"
               >
                 {/* Image with subtle hover effect */}
                 <motion.img

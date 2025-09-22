@@ -17,6 +17,7 @@ const PreloaderApp = ({ children }) => {
     "/video1.mp4","/video2.mp4","/video3.mp4"
   ];
 
+  // Critical background images (must be fully loaded)
   const heroBgAssets = ["/bg-home.png", "/bg-all.png"];
 
   useEffect(() => {
@@ -39,27 +40,31 @@ const PreloaderApp = ({ children }) => {
       }
     };
 
+    // Preload image (ensures cached for CSS usage too)
     const preloadImage = (src) => {
-      if (!imageCache[src]) {
-        const img = new Image();
-        img.src = src;
-        img.onload = () => {
-          imageCache[src] = img;
-          incrementProgress();
-        };
-        img.onerror = incrementProgress;
-      } else {
-        incrementProgress(); // already cached
+      if (imageCache[src]) {
+        incrementProgress();
+        return;
       }
+      const img = new Image();
+      img.src = src;
+      img.onload = () => {
+        imageCache[src] = img;
+        incrementProgress();
+      };
+      img.onerror = incrementProgress;
     };
 
+    // Preload video (wait until it can play through)
     const preloadVideo = (src) => {
       const video = document.createElement("video");
+      video.preload = "auto";
       video.src = src;
-      video.onloadeddata = incrementProgress;
+      video.oncanplaythrough = incrementProgress;
       video.onerror = incrementProgress;
     };
 
+    // Start preloading
     assets.forEach((asset) => {
       asset.endsWith(".mp4") ? preloadVideo(asset) : preloadImage(asset);
     });
