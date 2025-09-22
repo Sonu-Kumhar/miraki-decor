@@ -1,30 +1,29 @@
 import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { FiMic, FiMicOff, FiVolume2, FiVolumeX } from "react-icons/fi"; // Mic icons
+import { FiVolume2, FiVolumeX } from "react-icons/fi"; 
 import heroBg from "../assets/bg-home.png";
-
 
 const Home = () => {
   const [offset, setOffset] = useState({ x: 0, y: 0 });
-  const [soundEnabled, setSoundEnabled] = useState({}); // track which video has sound enabled
-  const videoRefs = useRef({}); // store video element references
+  const [soundEnabled, setSoundEnabled] = useState({});
+  const videoRefs = useRef({});
 
   const videos = [
     {
       src: "/video1.mp4",
       title: "Luxury Residential Spaces",
-      desc: "Our residential projects combine comfort, functionality, and aesthetics to create homes that truly reflect your lifestyle. From cozy apartments to expansive family homes, every detail is designed with care to ensure your space is elegant, warm, and inviting. Experience interiors that feel personalized and timeless.",
+      desc: "Our residential projects combine comfort, functionality, and aesthetics to create homes that truly reflect your lifestyle. From cozy apartments to expansive family homes, every detail is designed with care.",
     },
     {
       src: "/video2.mp4",
       title: "Modern Commercial Designs",
-      desc: "We design workspaces that enhance productivity and creativity, offering unique solutions for businesses of all sizes. Each office, cafe, or retail space is carefully curated to balance style and function, creating environments that inspire both employees and customers alike. Your brand comes alive through our designs.",
+      desc: "We design workspaces that enhance productivity and creativity, offering unique solutions for businesses of all sizes. Each office, cafe, or retail space is curated to balance style and function.",
     },
     {
       src: "/video3.mp4",
       title: "Turnkey Interior Solutions",
-      desc: "From planning to execution, we deliver complete interior solutions tailored to your budget and vision. Our team manages every aspect of your project, ensuring seamless integration of design, materials, and finishes. Enjoy stress-free, beautifully crafted interiors that exceed expectations and elevate your lifestyle.",
+      desc: "From planning to execution, we deliver complete interior solutions tailored to your budget and vision. Our team ensures seamless integration of design, materials, and finishes.",
     },
   ];
 
@@ -45,10 +44,10 @@ const Home = () => {
   };
 
   return (
-    <div className=" text-white">
+    <div className="text-white">
       {/* Hero Section */}
       <section
-        className="relative min-h-screen w-full flex items-center justify-center text-center overflow-hidden"
+        className="relative min-h-[80vh] md:min-h-screen w-full flex items-center justify-center text-center overflow-hidden"
         onMouseMove={handleMouseMove}
       >
         <div
@@ -61,18 +60,18 @@ const Home = () => {
             transform: `translate(${offset.x}px, ${offset.y}px) scale(1.1)`,
           }}
         />
-        <div className="absolute inset-0 bg-black/10" />
-        <div className="relative z-10 px-6 text-white drop-shadow-lg">
-          <h2 className="text-4xl md:text-6xl font-bold text-[#ffffff]">
+        <div className="absolute inset-0 bg-black/20" />
+        <div className="relative z-10 px-4 sm:px-6 text-white drop-shadow-lg">
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold">
             Style And Comfort For Your Home.
           </h2>
-          <p className="mt-4 max-w-2xl mx-auto text-lg md:text-xl">
+          <p className="mt-4 max-w-xl sm:max-w-2xl mx-auto text-base sm:text-lg md:text-xl">
             As one of the leading Interior Designers in Virar, we specialize in
-            creating custom interiors that are tailored to your needs and preferences.
+            creating custom interiors tailored to your needs and preferences.
           </p>
           <Link
             to="/contact"
-            className="mt-6 inline-block px-6 py-3 bg-white text-black font-semibold rounded-lg hover:font-bold hover:text-black transition-colors shadow-lg"
+            className="mt-6 inline-block px-5 py-2.5 sm:px-6 sm:py-3 bg-white text-black font-semibold rounded-lg hover:font-bold hover:text-black transition-colors shadow-lg"
           >
             Let’s Connect
           </Link>
@@ -80,38 +79,37 @@ const Home = () => {
       </section>
 
       {/* Intro Section */}
-      <section className=" text-black px-6 py-16">
+      <section className="text-black px-4 sm:px-6 py-12 sm:py-16">
         <motion.div
-          className="max-w-4xl mx-auto text-center"
+          className="max-w-3xl sm:max-w-4xl mx-auto text-center"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-[#ffcc66]">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#ffcc66]">
             Welcome to MIRAKI DECOR
           </h2>
-          <p className="mt-6 text-lg leading-relaxed text-white">
+          <p className="mt-6 text-base sm:text-lg leading-relaxed text-white">
             We are one of the leading Interior Designers in Virar dedicated to
             crafting beautiful, functional, and personalized spaces. Whether
-            you’re looking to renovate your home or design a new corporate
-            office, our team of experts provides complete turnkey interior
-            solutions tailored to your vision and budget.
+            you’re renovating your home or designing a new office, our team
+            provides turnkey interior solutions tailored to your vision.
           </p>
         </motion.div>
       </section>
 
       {/* Video Section */}
-      <section className="bg-[#] text-white px-6 pb-20 pt-10">
-        <div className="max-w-7xl mx-auto space-y-20">
-          <h2 className="text-3xl font-bold text-center text-[#ffcc66] mb-10">
+      <section className="px-4 sm:px-6 pb-16 sm:pb-20 pt-8 sm:pt-10">
+        <div className="max-w-7xl mx-auto space-y-16 sm:space-y-20">
+          <h2 className="text-2xl sm:text-3xl font-bold text-center text-[#ffcc66] mb-8 sm:mb-10">
             Explore Our Latest Residential & Commercial Projects
           </h2>
 
           {videos.map((item, i) => (
             <motion.div
               key={i}
-              className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center"
+              className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10 items-center"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut", delay: i * 0.2 }}
@@ -119,9 +117,12 @@ const Home = () => {
             >
               {/* Video */}
               <div
-                className={`relative overflow-hidden rounded-xl transition-shadow duration-500 ${i % 2 === 1 ? "md:order-2" : ""}`}
+                className={`relative overflow-hidden rounded-xl transition-shadow duration-500 ${
+                  i % 2 === 1 ? "md:order-2" : ""
+                }`}
                 style={{
-                  boxShadow: "15px 15px 30px rgba(0,0,0,0.5), 0 0 20px rgba(0,0,0,0.2)",
+                  boxShadow:
+                    "10px 10px 20px rgba(0,0,0,0.5), 0 0 15px rgba(0,0,0,0.2)",
                 }}
               >
                 <video
@@ -130,29 +131,32 @@ const Home = () => {
                   loop
                   autoPlay
                   playsInline
-                  className="w-full h-[70vh] object-cover rounded-xl transition-transform duration-500"
+                  className="w-full h-[40vh] sm:h-[60vh] md:h-[70vh] object-cover rounded-xl"
                   ref={(el) => (videoRefs.current[i] = el)}
                 />
-                {/* Mic Icon */}
+                {/* Volume Toggle */}
                 <div
-                  className="absolute top-4 right-4 p-2 bg-black/50 rounded-full cursor-pointer text-white text-2xl hover:bg-black/70 transition-colors"
+                  className="absolute top-3 right-3 sm:top-4 sm:right-4 p-2 bg-black/50 rounded-full cursor-pointer text-lg sm:text-2xl hover:bg-black/70 transition-colors"
                   onClick={() => toggleSound(i)}
                 >
                   {soundEnabled[i] ? <FiVolume2 /> : <FiVolumeX />}
                 </div>
               </div>
 
-
               {/* Text */}
               <motion.div
-                className={`text-center md:text-left`}
+                className="text-center md:text-left px-1 sm:px-0"
                 initial={{ opacity: 0, x: i % 2 === 1 ? -50 : 50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
                 viewport={{ once: true }}
               >
-                <h3 className="text-3xl font-bold text-[#ffcc66]">{item.title}</h3>
-                <p className="mt-4 text-xl leading-relaxed">{item.desc}</p>
+                <h3 className="text-2xl sm:text-3xl font-bold text-[#ffcc66]">
+                  {item.title}
+                </h3>
+                <p className="mt-3 sm:mt-4 text-base sm:text-lg leading-relaxed">
+                  {item.desc}
+                </p>
               </motion.div>
             </motion.div>
           ))}

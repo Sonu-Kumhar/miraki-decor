@@ -1,18 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 import bgAll from "../assets/bg-all.png";
 
 const Services = () => {
-  const [offset, setOffset] = useState({ x: 0, y: 0 });
-
-  const handleMouseMove = (e) => {
-    const { innerWidth, innerHeight } = window;
-    const x = (e.clientX / innerWidth - 0.5) * 30;
-    const y = (e.clientY / innerHeight - 0.5) * 30;
-    setOffset({ x, y });
-  };
-
   const services = [
     {
       title: "Residential Interior",
@@ -55,18 +47,14 @@ const Services = () => {
   return (
     <div className="text-white">
       {/* Hero Section */}
-      <section
-        className="relative min-h-[60vh] w-full flex items-center justify-center text-center overflow-hidden"
-        onMouseMove={handleMouseMove}
-      >
+      <section className="relative min-h-[60vh] w-full flex items-center justify-center text-center overflow-hidden">
         <div
-          className="absolute inset-0 w-full h-full transition-transform duration-200 ease-out"
+          className="absolute inset-0 w-full h-full"
           style={{
             backgroundImage: `url(${bgAll})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
-            transform: `translate(${offset.x}px, ${offset.y}px) scale(1.1)`,
           }}
         />
         <div className="absolute inset-0 bg-black/30" />
@@ -78,79 +66,81 @@ const Services = () => {
             Explore our wide range of interior design solutions tailored to
             your lifestyle, business, and home.
           </p>
-          {/* <Link
-            to="/contact"
-            className="mt-6 inline-block px-6 py-3 bg-[#cc6d00] text-white font-semibold rounded-lg hover:bg-[#a85600] transition-colors shadow-lg"
-          >
-            Contact Us
-          </Link> */}
         </div>
       </section>
 
       {/* Services List */}
       <div className="max-w-6xl mx-auto px-6 pt-20 space-y-32">
-        {services.map((service, index) => (
-          <motion.div
-            key={index}
-            className={`flex flex-col md:flex-row items-center gap-16 md:gap-24 ${index % 2 !== 0 ? "md:flex-row-reverse" : ""
+        {services.map((service, index) => {
+          const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.3 });
+
+          return (
+            <motion.div
+              key={index}
+              ref={ref}
+              className={`flex flex-col md:flex-row items-center gap-16 md:gap-24 ${
+                index % 2 !== 0 ? "md:flex-row-reverse" : ""
               }`}
-            initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }} // smaller offset
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, ease: "easeOut" }} // faster
-            viewport={{ once: true, amount: 0.3 }}
-          >
-            {/* Image */}
-            <motion.div
-              className="md:w-1/2 w-full relative overflow-hidden rounded-lg shadow-2xl"
-              initial={{ scale: 0.95 }}
-              whileInView={{ scale: 1 }}
-              transition={{ duration: 0.5, ease: "easeOut" }} // faster
-              viewport={{ once: true, amount: 0.3 }}
-              style={{
-                boxShadow: "15px 15px 30px rgba(0,0,0,0.5), 0 0 20px rgba(0,0,0,0.2)",
-              }}
+              initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+              animate={inView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.1 }}
             >
-              <img
-                src={service.img}
-                alt={service.title}
-                className="object-cover w-full h-[450px] md:h-[500px] rounded-lg"
-              />
+              {/* Image */}
+              <motion.div
+                className="md:w-1/2 w-full relative overflow-hidden rounded-lg shadow-xl"
+                initial={{ scale: 0.95, opacity: 0 }}
+                animate={inView ? { scale: 1, opacity: 1 } : {}}
+                transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.1 }}
+                style={{
+                  willChange: "transform, opacity",
+                }}
+              >
+                <img
+                  src={service.img}
+                  alt={service.title}
+                  className="object-cover w-full h-[450px] md:h-[500px] rounded-lg"
+                  loading="lazy"
+                />
+              </motion.div>
+
+              {/* Text */}
+              <motion.div
+                className="md:w-1/2 w-full"
+                initial={{ opacity: 0, y: 30 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.15 }}
+                style={{ willChange: "transform, opacity" }}
+              >
+                <h2 className="text-3xl md:text-4xl text-[#ffcc66] font-semibold mb-4">
+                  {service.title}
+                </h2>
+                <p className="text-white mb-6 text-lg md:text-2xl leading-relaxed">
+                  {service.desc}
+                </p>
+
+                {service.key ? (
+                  <Link
+                    to={
+                      service.key === "consultancy"
+                        ? "/contact"
+                        : `/projects/${service.key}`
+                    }
+                    className="inline-block px-6 py-3 bg-[#cc6d00] text-white font-medium rounded-lg shadow-md hover:bg-[#a85600] transition duration-300"
+                  >
+                    {service.action}
+                  </Link>
+                ) : (
+                  <Link
+                    to={service.link}
+                    className="inline-block px-6 py-3 bg-[#cc6d00] text-white font-medium rounded-lg shadow-md hover:bg-[#a85600] transition duration-300"
+                  >
+                    {service.action}
+                  </Link>
+                )}
+              </motion.div>
             </motion.div>
-
-            {/* Text */}
-            <motion.div
-              className="md:w-1/2 w-full"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, ease: "easeOut" }} // faster
-              viewport={{ once: true, amount: 0.3 }}
-            >
-              <h2 className="text-3xl md:text-4xl text-[#ffcc66] font-semibold mb-4">
-                {service.title}
-              </h2>
-              <p className="text-white mb-6 text-lg md:text-2xl leading-relaxed">
-                {service.desc}
-              </p>
-
-              {service.key ? (
-                <Link
-                  to={service.key === "consultancy" ? "/contact" : `/projects/${service.key}`}
-                  className="inline-block px-6 py-3 bg-[#cc6d00] text-white font-medium rounded-lg shadow-md hover:bg-[#a85600] transition duration-300"
-                >
-                  {service.action}
-                </Link>
-              ) : (
-                <Link
-                  to={service.link}
-                  className="inline-block px-6 py-3 bg-[#cc6d00] text-white font-medium rounded-lg shadow-md hover:bg-[#a85600] transition duration-300"
-                >
-                  {service.action}
-                </Link>
-              )}
-            </motion.div>
-          </motion.div>
-        ))}
-
+          );
+        })}
 
         {/* SEO Footer */}
         <div className="mt-20 text-center text-sm text-white">
