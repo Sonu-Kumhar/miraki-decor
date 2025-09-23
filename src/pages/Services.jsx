@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import bgAll from "../assets/bg-all.png";
 
 const Services = () => {
+  const [offset, setOffset] = useState({ x: 0, y: 0 });
+
   const services = [
     {
       title: "Residential Interior",
@@ -44,17 +46,30 @@ const Services = () => {
     },
   ];
 
+  // 👇 Background move effect
+  const handleMouseMove = (e) => {
+    const { innerWidth, innerHeight } = window;
+    const x = (e.clientX / innerWidth - 0.5) * 30;
+    const y = (e.clientY / innerHeight - 0.5) * 30;
+    setOffset({ x, y });
+  };
+
   return (
     <div className="text-white overflow-x-hidden">
       {/* Hero Section */}
-      <section className="relative min-h-[60vh] w-full flex items-center justify-center text-center overflow-hidden">
+      <section
+        className="relative min-h-[60vh] w-full flex items-center justify-center text-center overflow-hidden"
+        onMouseMove={handleMouseMove}
+      >
+        {/* Moving background */}
         <div
-          className="absolute inset-0 w-full h-full"
+          className="absolute inset-0 w-full h-full transition-transform duration-200 ease-out"
           style={{
             backgroundImage: `url(${bgAll})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
+            transform: `translate(${offset.x}px, ${offset.y}px) scale(1.1)`,
           }}
         />
         <div className="absolute inset-0 bg-black/30" />
@@ -95,7 +110,7 @@ const Services = () => {
                 <img
                   src={service.img}
                   alt={service.title}
-                  className="object-cover w-full max-w-full h-[450px] md:h-[500px] "
+                  className="object-cover w-full max-w-full h-[450px] md:h-[500px]"
                   loading="lazy"
                 />
               </motion.div>
@@ -116,7 +131,7 @@ const Services = () => {
 
                 <Link
                   to={service.key ? `/projects/${service.key}` : service.link}
-                  className="inline-block px-6 py-3 bg-[#cc6d00] text-white font-medium  shadow-md hover:bg-[#a85600] transition duration-300"
+                  className="inline-block px-6 py-3 bg-[#cc6d00] text-white font-medium shadow-md hover:bg-[#a85600] transition duration-300"
                 >
                   {service.action}
                 </Link>
