@@ -27,7 +27,7 @@ const projectData = {
     mainImg: "/ser4.jpg",
     desc: "Stylish, functional, and space-saving modular kitchens tailored to your taste and lifestyle.",
     gallery: ["/ser41.jpg", "/ser42.jpg", "/ser43.jpg", "/ser44.jpg"],
-  }
+  },
 };
 
 // 🔹 Component to render each project block
@@ -37,7 +37,7 @@ const ProjectSection = ({ title, mainImg, desc, gallery }) => (
     <img
       src={mainImg}
       alt={title}
-      className="w-full h-[400px] rounded-xl border-white p-1.5 border-2 object-cover shadow-lg mb-6"
+      className="w-full max-w-full h-[400px]  border-white p-1.5 border-2 object-cover shadow-lg mb-6"
     />
     <p className="text-xl text-white text-center mb-8">{desc}</p>
 
@@ -47,7 +47,7 @@ const ProjectSection = ({ title, mainImg, desc, gallery }) => (
           key={idx}
           src={img}
           alt={`${title} ${idx + 1}`}
-          className="w-full h-96 object-cover border-2 border-white p-1.5 rounded-2xl shadow-md hover:scale-105 transition-transform duration-300"
+          className="w-full max-w-full h-96 object-cover border-2 border-white p-1.5 shadow-md hover:scale-105 transition-transform duration-300"
         />
       ))}
     </div>
@@ -76,10 +76,10 @@ const Projects = () => {
   };
 
   return (
-    <div className="text-white">
+    <div className="text-white overflow-x-hidden"> {/* ✅ Prevent horizontal scroll */}
       {/* Hero Section */}
       <section
-        className="relative min-h-[60vh] w-full flex items-start justify-center text-center overflow-hidden pt-32" // pt-32 pushes content below navbar
+        className="relative min-h-[60vh] w-full flex items-start justify-center text-center overflow-hidden pt-32"
         onMouseMove={handleMouseMove}
       >
         <div
@@ -114,7 +114,7 @@ const Projects = () => {
               <div className="text-center mt-12">
                 <Link
                   to="/projects"
-                  className="inline-block px-6 py-3 bg-yellow-600 text-white rounded-xl shadow hover:bg-yellow-700 transition font-bold"
+                  className="inline-block px-6 py-3 bg-yellow-600 text-white  shadow hover:bg-yellow-700 transition font-bold"
                 >
                   ← Back to All Projects
                 </Link>
@@ -126,7 +126,7 @@ const Projects = () => {
               <p>The project category you are looking for doesn’t exist.</p>
               <Link
                 to="/projects"
-                className="inline-block mt-6 px-6 py-3 bg-yellow-600 text-white rounded-xl shadow hover:bg-yellow-700 transition"
+                className="inline-block mt-6 px-6 py-3 bg-yellow-600 text-white shadow hover:bg-yellow-700 transition"
               >
                 ← Back to All Projects
               </Link>

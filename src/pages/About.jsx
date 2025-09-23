@@ -30,20 +30,20 @@ const About = () => {
   };
 
   return (
-    <div className="text-white">
+    <div className="text-white overflow-x-hidden"> {/* ✅ Prevents horizontal scroll */}
       {/* Hero Section */}
       <section
         className="relative min-h-[60vh] w-full flex items-start justify-center text-center overflow-hidden pt-32"
         onMouseMove={handleMouseMove}
       >
         <div
-          className="absolute inset-0 w-full h-full transition-transform duration-200 ease-out"
+          className="absolute inset-0 w-full h-full transition-transform duration-200 ease-out will-change-transform"
           style={{
             backgroundImage: `url(${bgAll})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
-            transform: `translate(${offset.x}px, ${offset.y}px) scale(1.1)`,
+            transform: `translate(${offset.x}px, ${offset.y}px) scale(1.05)`, // ✅ reduced scale
           }}
         />
         <div className="absolute inset-0 bg-black/30" />
@@ -57,7 +57,7 @@ const About = () => {
         </div>
       </section>
 
-      <div className="max-w-6xl mx-auto px-6 pt-">
+      <div className="max-w-6xl mx-auto px-6">
         {/* Design Philosophy */}
         <motion.section
           className="pt-20"
@@ -76,7 +76,7 @@ const About = () => {
 
         {/* Founders Section */}
         <motion.section
-          className="py-20 "
+          className="py-20"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 1 }}
@@ -86,17 +86,17 @@ const About = () => {
             Meet Our Founder & Lead Designer
           </h2>
 
-          <div className="mt-12 flex flex-col md:flex-row justify-center items-start gap-12 ">
+          <div className="mt-12 flex flex-col md:flex-row justify-center items-start gap-12">
             {founders.map((founder, index) => (
               <div
                 key={index}
-                className="flex flex-col items-center max-w-sm text-center p-6 rounded-xl shadow-lg bg-black/40"
+                className="flex flex-col items-center max-w-sm text-center p-6  shadow-lg bg-black/40"
               >
                 {/* Image with subtle hover effect */}
                 <motion.img
                   src={founder.img}
                   alt={founder.name}
-                  className="w-full h-64 object-cover rounded-xl border-white border-2 mb-6 shadow-lg"
+                  className="w-full h-64 object-cover  border-white border-2 mb-6 shadow-lg"
                   whileHover={{ scale: 1.03 }}
                   transition={{ duration: 0.3 }}
                 />

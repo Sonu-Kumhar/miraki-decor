@@ -4,13 +4,14 @@
 body {
     font-family: 'Cinzel', serif;
     /* Smooth animated gradient background */
-    background: linear-gradient(
+    /* background: linear-gradient(
         180deg,
         #2C1B0F 0%,
         #5A2E17 35%,
         #A35B2A 70%,
         #E3B77A 100%
-    );
+    ); */
+    background-color: #542c16;
     background-size: 300% 300%;
     animation: gradientMove 12s ease infinite;
     min-height: 100vh;

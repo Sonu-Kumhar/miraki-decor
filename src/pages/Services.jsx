@@ -45,7 +45,7 @@ const Services = () => {
   ];
 
   return (
-    <div className="text-white">
+    <div className="text-white overflow-x-hidden">
       {/* Hero Section */}
       <section className="relative min-h-[60vh] w-full flex items-center justify-center text-center overflow-hidden">
         <div
@@ -78,7 +78,7 @@ const Services = () => {
             <motion.div
               key={index}
               ref={ref}
-              className={`flex flex-col md:flex-row items-center gap-16 md:gap-24 ${
+              className={`flex flex-col md:flex-row items-center gap-16 md:gap-x-24 ${
                 index % 2 !== 0 ? "md:flex-row-reverse" : ""
               }`}
               initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
@@ -87,18 +87,15 @@ const Services = () => {
             >
               {/* Image */}
               <motion.div
-                className="md:w-1/2 w-full relative overflow-hidden rounded-lg shadow-xl"
+                className="md:w-1/2 w-full relative overflow-hidden shadow-xl"
                 initial={{ scale: 0.95, opacity: 0 }}
                 animate={inView ? { scale: 1, opacity: 1 } : {}}
                 transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.1 }}
-                style={{
-                  willChange: "transform, opacity",
-                }}
               >
                 <img
                   src={service.img}
                   alt={service.title}
-                  className="object-cover w-full h-[450px] md:h-[500px] rounded-lg"
+                  className="object-cover w-full max-w-full h-[450px] md:h-[500px] "
                   loading="lazy"
                 />
               </motion.div>
@@ -109,7 +106,6 @@ const Services = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.15 }}
-                style={{ willChange: "transform, opacity" }}
               >
                 <h2 className="text-3xl md:text-4xl text-[#ffcc66] font-semibold mb-4">
                   {service.title}
@@ -118,25 +114,12 @@ const Services = () => {
                   {service.desc}
                 </p>
 
-                {service.key ? (
-                  <Link
-                    to={
-                      service.key === "consultancy"
-                        ? "/contact"
-                        : `/projects/${service.key}`
-                    }
-                    className="inline-block px-6 py-3 bg-[#cc6d00] text-white font-medium rounded-lg shadow-md hover:bg-[#a85600] transition duration-300"
-                  >
-                    {service.action}
-                  </Link>
-                ) : (
-                  <Link
-                    to={service.link}
-                    className="inline-block px-6 py-3 bg-[#cc6d00] text-white font-medium rounded-lg shadow-md hover:bg-[#a85600] transition duration-300"
-                  >
-                    {service.action}
-                  </Link>
-                )}
+                <Link
+                  to={service.key ? `/projects/${service.key}` : service.link}
+                  className="inline-block px-6 py-3 bg-[#cc6d00] text-white font-medium  shadow-md hover:bg-[#a85600] transition duration-300"
+                >
+                  {service.action}
+                </Link>
               </motion.div>
             </motion.div>
           );
